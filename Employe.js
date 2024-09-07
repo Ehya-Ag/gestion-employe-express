@@ -2,7 +2,7 @@ export default class Employe{
     constructor(){
 
     }
-    ajout(employe){
+    add(employe){
         this.id = employe.id,
         this.nom = employe.nom,
         this.prenom = employe.prenom,
@@ -12,7 +12,7 @@ export default class Employe{
         this.statut = employe.statut
         console.log(`l'employe ${this.nom} a été enregistrer avec succes`)
     }
-    mettreAjour(newEmploye){
+    update(newEmploye){
         this.nom = newEmploye.nom,
         this.prenom = newEmploye.prenom,
         this.email = newEmploye.email,
@@ -21,12 +21,23 @@ export default class Employe{
         this.statut = newEmploye.statut
         console.log(`l'employe ${this.nom} a été modifier avec succes`)
     }
-    supprime(){
-        console.log(`l'employe ${this.nom} dans le poste ${this.poste} a ete supprimer`)
+    destroy(){
+            this.name= "",            
+            this.prenom = "",
+            this.email = "",
+            this.poste = "",
+            this.dateEmbauche = "",
+            this.statut = "",
+        console.log(`l'employe ${this.nom} a ete supprimer`)
     }
     getEmploye() {
-        console.log(`Employer: ${this.name}, ${this.email}`);
-        return { name: this.name };
+        return { 
+            name: this.name,
+            prenom : this.prenom,
+            email : this.email,
+            poste : this.poste,
+            dateEmbauche : this.dateEmbauche,
+            statut : this.statut,
+        };
       }
 }
-//

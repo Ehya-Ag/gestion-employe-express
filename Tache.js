@@ -1,26 +1,41 @@
-export default class Tache{
+export default class Task{
     constructor(){};
-    ajoutTache(tache){
-        this.id = tache.id, 
-        this.nom = tache.nom, 
-        this.description = tache.description, 
-        this.dateDebut = tache.dateDebut, 
-        this.dateFin = tache.dateFin,
-        this.statut = tache.statut,
-        this.priorite = tache.priorite
-        console.log(`tache ${this.nom} ajouter avec succes`)
+    addTask(task){
+        this.id = task.id, 
+        this.nom = task.nom, 
+        this.description = task.description, 
+        this.dateDebut = task.dateDebut, 
+        this.dateFin = task.dateFin,
+        this.statut = task.statut,
+        this.priorite = task.priorite
+        console.log(`Task ${this.nom} ajouter avec succes`)
     }
-    modifierTache(newTache){
-        this.id = newTache.id, 
-        this.nom = newTache.nom, 
-        this.description = newTache.description, 
-        this.dateDebut = newTache.dateDebut, 
-        this.dateFin = newTache.dateFin,
-        this.statut = newTache.statut,
-        this.priorite = newTache.priorite
-        console.log(`tache ${this.nom} modifier avec succes`)
+    updateTask(newTask){
+        this.id = newTask.id, 
+        this.nom = newTask.nom, 
+        this.description = newTask.description, 
+        this.dateDebut = newTask.dateDebut, 
+        this.dateFin = newTask.dateFin,
+        this.statut = newTask.statut,
+        this.priorite = newTask.priorite
+        console.log(`Task ${this.nom} modifier avec succes`)
     }
-    supprimer(){
-        console.log(`la taches a ete supprimme avec  succes`)
+    destroy(){
+        this.id = null,
+        this.nom = null,
+        this.description = null,
+        this.dateDebut = null,
+        this.dateFin = null,
+        this.priorite = null
+    }
+    getTask(){
+        return {
+            nom: this.nom,
+            description: this.description,
+            dateDebut: this.dateDebut,
+            dateFin: this.dateFin,
+            statut: this.statut,
+            priorite: this.priorite,
+          };
     }
 }

@@ -1,33 +1,46 @@
 export default class Assignation {
-    // constructor(employe, tache, dateAssignation) {
-    //         this.employe = employe;
-    //         this.tache = tache;
-    //         this.dateAssignation = dateAssignation;
-    //       }
-    assignerTache(newTache) {
-            this.employe = newTache.employe;
-            this.tache = newTache.tache;
-            this.dateAssignation = newTache.dateAssignation
+    static tabAssignations = []
+    static getTab(){
+        return Assignation.tabAssignations;
+    }
+   static assign({employe, tache, dateAssignation}) {
+            Assignation.tabAssignations.push({employe, tache, dateAssignation})
             console.log('la tache a ete affecté cree avec succes')
     }
-
-    // retirerTache(employe, tache) {
-    //     this.assignations = this.assignations.filter(a => !(a.employe === employe && a.tache === tache));
-    // }
-
-    listerTachesParEmploye(employe) {
-        return this.assignation
-            .filter(a => a.employe === employe)
-            .map((assignation) => {
-                return {
-                    tache: assignation.tache
-                }
+    static dropAssign(employe) {
+        if (employe) {
+          Assignation.tabAssignations = Assignation.tabAssignations.filter(
+            (emp) => {
+              return emp.employe.nom !== employe.nom
+            }
+          );
+        }
+      }
+      static getEmpAssign(employe) {
+        console.log(`${employe} existe`)
+        if (employe) {
+          return Assignation.tabAssignations
+            .filter(emp => emp.employe.nom === employe.nom)
+            .map(ass => {
+              return {
+                tache: ass.tache,
+                dateAssignation: ass.dateAssignation,
+              };
             });
-    }
-
-    // listerEmployesParTache(tache) {
-    //     return this.assignations
-    //         .filter(a => a.tache === tache)
-    //         .map(a => a.employe);
-    // }
+        }
+      }
+      static getTacheAssign(tache) {
+        console.log("on est dans tache assigner")
+        if (tache) {
+          return Assignation.tabAssignations = Assignation.tabAssignations
+            .filter(tsk => tsk.tache.nom === tache.nom)
+            .map(ass => {
+              return {
+                employe: ass.employe,
+                dateAssignation: ass.dateAssignation,
+              };
+            });
+        }
+       
+      }
 }
